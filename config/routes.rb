@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :comments
+      resources :posts
+
+      root to: "comments#index"
+    end
   resources :comments
   resources :posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

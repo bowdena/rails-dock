@@ -14,4 +14,19 @@ ruby-bundle-cache
 > $ source .dockedrc
 ```
 
+### Problem 1
+## Problem with postgres and docked.
+# documented here: https://github.com/rails/docked/issues/28
+
+# build custom docker container
+```bash
+> $ docker build -t my-docked-override -f Dockerfile.override .
+```
+# update the .dockrc file
+```bash
+> $ my-docked-override
+> $ dbundle
+```
+
+
 

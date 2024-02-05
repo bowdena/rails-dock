@@ -1,4 +1,5 @@
-alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
+# alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
+alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 my-docked-override'
 
 alias drails='docked rails'
 alias drails-dev='docked bin/dev'
@@ -6,3 +7,4 @@ alias dbundle='docked bundle'
 alias dyarn='docked yarn'
 alias drake='docked rake'
 alias dgem='docked gem'
+

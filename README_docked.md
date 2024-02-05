@@ -30,6 +30,9 @@ ruby-bundle-cache
 
 ### Problem 2
 The database on the docker container cannot connect to the local host db.
+```bash
+drails server
+```
 # Update the database.yml file
 ```yaml
 default: &default
@@ -43,11 +46,19 @@ alias docked='docker run -e DATABASE_HOST=host.docker.internal --r....
 ```
 
 ### Problem 3
-## Problem with import maps and docked when running drails-dev
-The server runs with
-```bash
-drails server
+## npm complains
 ```
+09:00:28 js.1   | Error:
+09:00:28 js.1   | You installed esbuild for another platform than the one you're currently using.
+09:00:28 js.1   | This won't work because esbuild is written with native code and needs to
+09:00:28 js.1   | install a platform-specific binary executable.
+```
+THis is an issue with mac vs linux architecture.
+The solution is to run
+dyarn when using the docker container
+and yarn to rebuild the assets when you're not.
+
+
 
 
 

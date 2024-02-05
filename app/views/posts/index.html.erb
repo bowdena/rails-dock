@@ -1,7 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="font-bold text-7xl">Over here</div>
 <h1>Posts</h1>
-
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
@@ -10,5 +9,4 @@
     </p>
   <% end %>
 </div>
-
 <%= link_to "New post", new_post_path %>

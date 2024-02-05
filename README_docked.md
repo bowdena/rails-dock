@@ -28,5 +28,28 @@ ruby-bundle-cache
 > $ dbundle
 ```
 
+### Problem 2
+The database on the docker container cannot connect to the local host db.
+# Update the database.yml file
+```yaml
+default: &default
+  ...
+  host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
+  ...
+```
+Update the docked stanza to include the DATABASE_HOST environment variable
+```bash
+alias docked='docker run -e DATABASE_HOST=host.docker.internal --r....
+```
+
+### Problem 3
+## Problem with import maps and docked when running drails-dev
+The server runs with
+```bash
+drails server
+```
+
+
+
 
 

@@ -1,5 +1,5 @@
 # alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
-alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 my-docked-override'
+alias docked='docker run -e DATABASE_HOST=host.docker.internal --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 my-docked-override'
 
 alias drails='docked rails'
 alias drails-dev='docked bin/dev'

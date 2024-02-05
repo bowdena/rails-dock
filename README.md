@@ -15,7 +15,7 @@ Capybara testing
 bowdena@zn42957 ~/code/personal
 > $ gem install rails -v 7.1.3
 bowdena@zn42957 ~/code/personal
-# Required as I'm using libpq rather than the postgres https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e                                                                                                                   > $ export CONFIGURE_ARGS="with-pg-include=/opt/homebrew/Cellar/libpq/16.1_1/bin/pg_config"
+# Required as I'm using libpq rather than the postgres https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e                                                                                                              > $ export CONFIGURE_ARGS="with-pg-include=/opt/homebrew/Cellar/libpq/16.1_1/bin/pg_config"
 > $ rails _7.1.3_ new photo_example --css=tailwind --javascript=esbuild --asset-pipeline=propshaft --database=postgresql
 > $ cd photo_example
 ```

@@ -67,7 +67,7 @@ test:
   database: photo_example_test
   username: postgres
   password: postgres
-  host: localhost
+  host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
   port: 5500
   gssencmode: disable
 

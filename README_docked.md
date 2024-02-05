@@ -58,6 +58,13 @@ The solution is to run
 dyarn when using the docker container
 and yarn to rebuild the assets when you're not.
 
+## Problem 4
+Failure when trying to run the docker test suite
+update the host stanza again
+```
+host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
+```
+> $ drails test
 
 
 

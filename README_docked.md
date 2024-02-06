@@ -66,6 +66,18 @@ host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
 ```
 > $ drails test
 
+## Problem 5
+Failure when running the capybara tests
+Need to run the chrome browser remotely
+```bash
+> $ chromedriver --whitelisted-ips --allowed-origins='*'
+> $ dsystemtest
+```
+In order to run the firefox browser remotely
+```bash
+> $ geckodriver --port 9515 --allow-hosts=host.docker.internal --host 0.0.0.0
+> $ dsystemtest-firefox
+```
 
 
 

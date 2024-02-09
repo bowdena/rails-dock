@@ -1,0 +1,9 @@
+services:
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+    platform: linux/arm64
+
+volumes:
+  redis_data:

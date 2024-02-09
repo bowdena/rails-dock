@@ -1,0 +1,29 @@
+version: "3.8"
+include:
+  - .docker/postgres.yml
+  - .docker/redis.yml
+
+x-base: &base
+  build:
+    context: .
+    dockerfile: .docker/Dockerfile.dev
+  stdin_open: true
+  tty: true
+
+services:
+  app:
+    <<: *base
+    command: bin/dev
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres/photo_example_development
+      REDIS_URL: ${REDIS_URL}
+      RUBY_YJIT_ENABLE: 1
+
+

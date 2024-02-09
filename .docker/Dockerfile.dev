@@ -1,0 +1,28 @@
+FROM ruby:3.2.0
+
+ENV RAILS_ENV=development \
+    NODE_MAJOR=20
+
+
+RUN apt update -qq && \
+  apt install -y --no-install-recommends build-essential libpq-dev curl &&\
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg -o /root/yarn-pubkey.gpg && \
+  apt-key add /root/yarn-pubkey.gpg && \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
+  apt-get update && apt-get install -y ca-certificates curl gnupg &&\
+  mkdir -p /etc/apt/keyrings/ && \
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg &&\
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list &&\
+  apt update && \
+  apt install -y --no-install-recommends nodejs yarn && \
+  apt clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY Gemfile* ./
+RUN bundle install -j $(nproc)
+
+COPY package.json yarn.lock ./
+RUN yarn install --ignore-scripts
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

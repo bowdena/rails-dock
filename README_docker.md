@@ -74,7 +74,7 @@ app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/definition.rb:266:in `specs_for'
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/runtime.rb:18:in `setup'
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler.rb:162:in `setup'
-app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/setup.rb:23:in `block in <top (required)>'
+app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/setup.rb:23:in `block in <tπop (required)>'
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/ui/shell.rb:159:in `with_level'
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/ui/shell.rb:111:in `silence'
 app-1       | 09:30:25 web.1  |         from /usr/local/bundle/gems/bundler-2.4.15/lib/bundler/setup.rb:23:in `<top (required)>'
@@ -90,3 +90,25 @@ app-1       | 09:30:26 css.1  |
 app-1       | 09:30:26 css.1  | Rebuilding...
 ...
 # doesn't work because the container needs to be rebuilt
+> $ docker-compose up -d --build
+# shell into the running app rather than a new container with docker-compose run
+> $ docker-compose exec app bash
+
+# shortcut
+> $ source .docker/.coderc
+> $ dcu # docker-compose up, if you ctrl+c, this will background - > $ docker container ls
+# Close and remove the docker container
+> $ dcd
+# build the container using a cached docker container
+> $ dcb
+# force a rebuild of the container
+> $ dcbc
+# create new container
+> $ dcr
+# join th existing running app
+> $ dce bash
+root@92bdcd2300a6:/app# bundle add stripe
+# end of the day, you can dcs (stop)
+# start of the next day, you can dcs (start)
+
+
